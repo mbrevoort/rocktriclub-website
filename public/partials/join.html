@@ -1,0 +1,77 @@
+<div class="page-header">
+  <h1>Join <small>Rock Tri Club</small></h1>
+</div>
+
+
+<div class="row">
+  <div class="col-xs-12 col-md-8">
+
+    <form id="joinForm" stripe:form="processJoin" class="form-inline" role="form">
+
+      <div class="radio">
+        <label>
+          <input type="radio" ng-model="type" value="individual">
+          <span class="label label-primary">$30/yr</span>
+          <strong>Individual Membership</strong>
+          <div class="radio-secondary-text">for you</div>
+        </label>
+      </div>
+
+      <div class="radio">
+        <label>
+          <input type="radio" ng-model="type" value="family">
+          <span class="label label-primary">$50/yr</span>
+          <strong>Family Membership</strong>
+          <div class="radio-secondary-text">swag for 2 people, membership for those under the same roof</div>
+        </label>
+      </div>
+
+      <div class="radio">
+        <label>
+          <input type="radio" ng-model="type" value="6202individual">
+          <span class="label label-primary">$60/yr</span>
+          <strong>Joint 6202 Individual Membership</strong>
+          <div class="radio-secondary-text">membership to Rock Tri Club and 6202 Cycling Club for one person (save $5)</div>
+        </label>
+      </div>
+
+      <div class="radio">
+        <label>
+          <input type="radio" ng-model="type" value="6202family">
+          <span class="label label-primary">$90/yr</span>
+          <strong>Joint 6202 Family Membership</strong>
+          <div class="radio-secondary-text">family membership to Rock Tri Club and 6202 Cycling Club (save $10)</div>
+        </label>
+      </div>
+
+
+      <br/><br/>
+      <div class="alert alert-danger" ng-if="!!errorMsg">{{errorMsg}}</div>
+
+      <div class="form-group">
+        <label class="sr-only" for="joinCardNumber">Card number</label>
+        <input type="text" size="20" data-stripe="number" class="form-control" id="joinCardNumber" placeholder="Card number">
+      </div>
+      <div class="form-group">
+        <label class="sr-only" for="joinCardMonth">Expiration month</label>
+        <input type="text" size="2" data-stripe="exp-month" class="form-control" id="joinCardMonth" placeholder="mm">
+      </div>
+      <div class="form-group">
+        <label class="sr-only" for="joinCardYear">Expiration year</label>
+        <input type="text" size="2" data-stripe="exp-year" class="form-control" id="joinCardYear" placeholder="yy">
+      </div>
+      <div class="form-group">
+        <label class="sr-only" for="joinCardCVC">CVC</label>
+        <input type="text" size="4" data-stripe="cvc" class="form-control" id="joinCardCVC" placeholder="cvc">
+      </div>
+
+      <button type="submit" class="btn btn-primary" ng-disabled="isBusy">Submit</button>
+    </form>
+  </div>
+  <div class="col-xs-6 col-md-4">
+    <img src="/img/credit-card-logos.jpg" alt="Visa, MasterCard, American Express, Discover" class="img-rounded" id="joinCreditCardLogos"/>
+    <a href="https://stripe.com">
+      <img src="/img/powered-by-stripe.png" alt="Powered by Stripe" id="joinStripeLogo"/>
+    </a>
+  </div>
+</div>

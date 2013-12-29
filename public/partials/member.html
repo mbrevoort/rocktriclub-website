@@ -1,0 +1,10 @@
+<div ng-if="!!session.user  && session.initialized">
+  <join ng-if="session.user.isMember == false"></join>
+  <div ng-if="!!session.user.isMember">
+    <h2>Welcome member!</h2>
+  </div>
+</div>
+
+<div ng-if="!session.user && session.initialized">
+  <p class="text-center">Sign-in to join!</p>
+</div>

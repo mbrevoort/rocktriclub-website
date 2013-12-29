@@ -1,0 +1,8 @@
+extends layout
+
+block content
+  .index-view(ng-if='!hideIndex') This is the default view
+
+  .main-view
+    div(ng-view)
+

@@ -1,0 +1,24 @@
+.nav-user-avatar {
+    border-radius: 100%;
+    border: 2px solid #FFF;
+    width: 40px;
+    margin: -10px 10px;
+}
+
+.navbar-nav li a.avatar {
+    display: inline;
+}
+
+#joinCreditCardLogos, #joinStripeLogo {
+    padding: 5px 5px 5px 0;
+}
+
+.radio-secondary-text {
+    padding-left: 15px;
+    padding-bottom: 10px;
+    font-style: italic;
+}
+
+#joinForm div.radio{
+    display: block;
+}
