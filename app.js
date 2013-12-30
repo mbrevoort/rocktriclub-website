@@ -34,6 +34,8 @@ app.get('/results', routes.results);
 app.get('/workouts', routes.workouts);
 app.post('/api/join', routes.stripe.join);
 
+console.log('config', config);
+
 http.createServer(app).listen(config.port, function(){
   console.log('Express server listening on port ' + config.port);
 });
