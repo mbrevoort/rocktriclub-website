@@ -661,7 +661,7 @@ header.jumbotron{
     transition:transform 0.3s ease-out;
     padding: 10px;
     background-color: rgba(255,255,255,0.5);
-    margin: 20px;
+    margin: 40px;
 }
 
 .sponsors-item:hover img {
@@ -959,7 +959,7 @@ header.jumbotron{
 #main-footer {
     background:#fff;
     color:#8aaad9;
-    padding:8s0px 0 30px;
+    padding:80px 0 30px;
 }
 
 #main-footer .small-logo {
