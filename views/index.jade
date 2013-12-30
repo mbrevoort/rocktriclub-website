@@ -1,8 +1,73 @@
 extends layout
 
 block content
-  .index-view(ng-if='!hideIndex') This is the default view
+  .index-view(ng-if='!hideIndex')
+    header#home.jumbotron
+      .container
+        .message-box.clearfix
+          .left-col
+            p Rock Tri Club
+          
+          .right-col
+            p A multisport club centered in beautiful Castle Rock, CO
 
-  .main-view
-    div(ng-view)
+    section#mission
+      .container
+        h1.section-title.scrollimation.scale-in Our <span>Mission</span><i class="icon-flag"></i>
+        
+        .row.fade-left
+          .col-md-6.col-md-offset-3
+            p Rock Tri Club is organized and created to benefit its members in the sports of triathlon, duathlon, and their collective parts, swimming, biking, running.
+            p The Club will provide an opportunity for member athletes to work together and learn the necessary skills to pursue their individual goals in the different multisport events taking place in Colorado and around the world.
+            p Additionally, the Club will enable its members to organize social events and other non-athletic group activities in order to benefit its members as the collective group sees fit.
+            p Finally, the Club will provide its members to pursue financial benefits, group discounts, seminars, sponsorships, and any other group benefit as the club members sees fit.
 
+
+    section#about
+      .container
+        .row
+          .col-sm-4.col-sm-offset-1.scrollimation.fade-right
+            img.img-responsive.img-circle.img-center(src="assets/rich_finish_340x340.jpg" alt="Rich Kline")
+          .col-sm-6.col-sm-offset-1.scrollimation.fade-left
+            h1 Coach Rich Kline
+            p If I am not Spinning, Coaching, or training for a race, I can be found mountain biking, skiing, golfing, or spending time with my wife two daughters anywhere in the great state of Colorado!  I am in awe of the Wright Brothers who not only were first in flight, but also designed the worlds first wind tunnel, and their propeller design is still in use today. And of course because they did all this in their bike shop over 100 years ago! I am inspired by Lance Armstrong who should have died from cancer but instead became the greatest Tour De France Champion ever! And by Cal Ripken Jr. and Brett Favre, Ironmen who show up every game ready to play no matter what!
+
+    section#sponsors
+      #sponsors-header.text-center
+        h1.section-title.scrollimation.fade-left Our <span>sponsors</span> and friends <i class="icon-trophy"></i>
+
+      .container.masonry-wrapper.scrollimation
+        #sponsors-container
+          a.sponsors-item(href="http://shop.runcolorado.com/")
+            img.image-responsive.sponsors-image-lg(src="/assets/sponsors/runco_208.png")
+          a.sponsors-item(href="http://www.mylittletonhospital.org/castlerock")
+            img.image-responsive.sponsors-image-lg(src="/assets/sponsors/centura_208.png")
+          a.sponsors-item(href="http://www.americancyclesport.com/")
+            img.image-responsive.sponsors-image-lg(src="/assets/sponsors/americancyclesport_208.png")
+          a.sponsors-item(href="http://www.leadingedgephysicaltherapy.com/")
+            img.image-responsive.sponsors-image-lg(src="/assets/sponsors/leadingedge_208.jpg")
+          a.sponsors-item(href="http://castlerockradio.com/")
+            img.image-responsive.sponsors-image-lg(src="/assets/sponsors/crradio_208.jpg")
+
+          a.sponsors-item(href="http://elementsmassage.com/castlerock")
+            img.image-responsive.sponsors-image-md(src="/assets/sponsors/elements_208.png")
+          a.sponsors-item(href="http://www.blvdpizza.com/")
+            img.image-responsive.sponsors-image-md(src="/assets/sponsors/blvdpizza_208.jpg")
+          a.sponsors-item(href="http://www.lostcoffee.com/")
+            img.image-responsive.sponsors-image-md(src="/assets/sponsors/lostcoffee_208.png")
+
+          a.sponsors-item(href="http://www.foundersfamilymedicine.com/")
+            img.image-responsive.sponsors-image-sm(src="/assets/sponsors/founders_208.png")
+          a.sponsors-item(href="http://www.miragedentalassociates.com/")
+            img.image-responsive.sponsors-image-sm(src="/assets/sponsors/miragedental_208.png")
+          a.sponsors-item(href="http://www.castlerockfitness.com/")
+            img.image-responsive.sponsors-image-sm(src="/assets/sponsors/essence_208.png")
+          a.sponsors-item(href="http://www.thefowlline.com/")
+            img.image-responsive.sponsors-image-sm(src="/assets/sponsors/fowlline_208.jpg")
+          a.sponsors-item(href="http://www.cliffordhancock.remaxagent.com/")
+            img.image-responsive.sponsors-image-sm(src="/assets/sponsors/remax_208.png")
+
+
+block scripts
+  script(src='/js/jquery.masonry.min.js')
+  script(src='/js/index.js')

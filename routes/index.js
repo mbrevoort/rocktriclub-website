@@ -9,7 +9,15 @@ exports.index = function(req, res){
 };
 
 exports.member = function(req, res){
-  res.render('ngview', { title: 'Rock Tri Club Membership', config: config });
+  res.render('member', { title: 'Rock Tri Club Membership', config: config });
+};
+
+exports.workouts = function(req, res){
+  res.render('workouts', { title: 'Rock Tri Club Workouts', config: config });
+};
+
+exports.results = function(req, res){
+  res.render('results', { title: 'Rock Tri Club Results', config: config });
 };
 
 exports.stripe = require('./stripe');

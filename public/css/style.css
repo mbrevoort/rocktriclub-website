@@ -22,3 +22,51 @@
 #joinForm div.radio{
     display: block;
 }
+
+#member-table td {
+    line-height: 48px;
+    font-size: 20px;
+}
+
+.main-view > .container {
+    padding-top: 50px;
+}
+/* theme overrides */
+
+#main-nav a.ir-logo {
+    background: url("../assets/rtclogo.png");
+}
+.jumbotron .left-col p {
+    text-transform: uppercase;
+    font-weight: 900;
+}
+
+.jumbotron .right-col p {
+    font-weight: 300;
+    padding: 20px 30px 10px 20px;
+    font-size: 28px;
+    line-height: 39px;
+}
+
+header#inner.jumbotron {
+    background:url(../assets/header-bg.jpg) no-repeat center center fixed; 
+    height:120px;
+    min-height: 120px;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    color:#8aaad9;
+}
+
+#main-nav .nav .dropdown-menu a,
+#main-nav .nav .dropdown-menu a:active,
+#main-nav .nav .dropdown-menu a:hover{
+    font-size: inherit;
+    line-height: inherit;
+    color:#8aaad9;
+}
+
+#main-nav li {
+    margin: 0 2px;
+}

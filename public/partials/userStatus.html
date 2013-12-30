@@ -1,19 +1,12 @@
-<li class="dropdown" ng-if="session.user" ng-cloak>
-  <a class="dropdown-toggle" data-toggle="dropdown">
+<li ng-if="session.user" ng-cloak>
+  <a href="/member#/profile">
     <img class="nav-user-avatar" ng-src='{{session.user.avatar}}'/>
     <span>{{session.user.displayName}}</span>
-    <b class="caret"></b>
   </a>
-  <ul class="dropdown-menu">
-    <li>
-      <a href="#">Profile</a>
-    </li>
-    <li class="divider"></li>
-    <li>
-      <a ng-click='signout()' href="#">Sign out</a>
-    </li>
-  </ul>
+</li>
+<li ng-if="session.user" ng-cloak>
+  <a ng-click='signout()' href="#" title="Sign out"><i class="icon-signout"></i></a>
 </li>
 <li ng-if="session.user == null" ng-cloak>
-  <a ng-click='signin()' href="#">Sign In</a>
+  <a ng-click='signin()' href="#">Sign In / Join <i class="icon-facebook-sign"></i></a>
 </li>

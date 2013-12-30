@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  .main-view
+    header#inner.jumbotron
+    .container
+      ul.nav.nav-tabs(ng-if="!!session.user.isMember")
+        li(ng-class="{ active: isActive('/')}")
+          a(href="/member#/") Members
+        li(ng-class="{ active: isActive('/profile')}")
+          a(href="/member#/profile") Profile &amp; Account
+
+      div(ng-view)
+
+block scripts
+  script.
+    Stripe.setPublishableKey('#{config.stripe_publishable_key}');
+  script(src='/js/member.js')

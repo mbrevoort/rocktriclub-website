@@ -1,0 +1,42 @@
+
+
+
+<div class="row">
+  <div class="col-md-6">
+    <h1>Profile <small>{{session.user.displayName}}</small></h1>
+
+    <form role="form">
+      <div class="form-group">
+        <label for="profileName">Name</label>
+        <input ng-model="displayName" type="text" class="form-control" id="profileName" placeholder="Your name">
+      </div>
+      <div class="form-group">
+        <label for="profileEmail">Email</label>
+        <input ng-model="email" type="email" class="form-control" id="profileEmail" placeholder="Email">
+      </div>
+      <div class="form-group">
+        <label for="profilePhone">Phone number</label>
+        <input ng-model="phone" type="phone" class="form-control" id="profilePhone" placeholder="###-###-####">
+      </div>
+      <button ng-click="saveProfile()" type="submit" class="btn btn-primary">Save</button>
+    </form>
+  </div>
+  <div class="col-md-6">
+    <h1>Payments</h1>
+
+    <table class="table">
+      <tr>
+        <th>Date</th>
+        <th>Description</th>
+        <th>Amount</th>
+        <th>Card</th>
+      </tr>
+      <tr ng-repeat="(id, payment) in payments">
+        <td>{{stripeTimestampToDate(payment.created) | date:'short'}}</td>
+        <td>{{payment.description}}</td>
+        <td>${{payment.amount/100}}</td>
+        <td>{{payment.card.type}} **** {{payment.card.last4}}</td>
+      </tr>
+    </table>
+  </div>
+</div>

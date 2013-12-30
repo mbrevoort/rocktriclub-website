@@ -29,7 +29,9 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', routes.index);
-app.get('/member', routes.index);
+app.get('/member', routes.member);
+app.get('/results', routes.results);
+app.get('/workouts', routes.workouts);
 app.post('/api/join', routes.stripe.join);
 
 http.createServer(app).listen(config.port, function(){

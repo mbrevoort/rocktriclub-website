@@ -1,10 +1,30 @@
 <div ng-if="!!session.user  && session.initialized">
-  <join ng-if="session.user.isMember == false"></join>
+  <join ng-if="!session.user.isMember"></join>
   <div ng-if="!!session.user.isMember">
-    <h2>Welcome member!</h2>
+    <h1>Welcome <small>{{session.user.displayName}}</small></h1>
+
+    <div class="row">
+      <div class="col-md-8">
+        <h2>Member List</h2>
+        <table id="member-table" class="table">
+          <tr ng-repeat="(id, member) in members" ng-if="member.isMember">
+            <td><img ng-src="{{member.avatar}}" class="img-circle"/></td>
+            <td> {{member.displayName}}</td>
+            <td>{{member.email}}</td>
+            <td>{{member.phone}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
   </div>
 </div>
 
 <div ng-if="!session.user && session.initialized">
-  <p class="text-center">Sign-in to join!</p>
+  <div class="page-header">
+    <h1>Membership <small>Rock Tri Club</small></h1>
+    <p>
+      The Rock Tri Club is organized and created to benefit its members in the 
+      sports of triathlon, duathlon, and their collective parts, swimming, biking, running.
+    </p>
+  </div>
 </div>

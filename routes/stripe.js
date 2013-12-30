@@ -14,10 +14,10 @@ exports.join = function(req, res, next){
   var type = req.body.type;
   //var firebaseSessionKey = req.cookies.firebaseSessionKey;
 
-  var amount = (type === 'individual') ? 30
-             : (type === 'family') ? 60
-             : (type === '6202individual') ? 50
-             : (type === '6202family') ? 90
+  var amount = (type === 'Individual') ? 30
+             : (type === 'Family') ? 60
+             : (type === '6202 Individual') ? 50
+             : (type === '6202 Family') ? 90
              : -1;
 
   if (amount < 0) {
@@ -48,6 +48,8 @@ exports.join = function(req, res, next){
     }).then(function(charge) {
       // Charge succeeded
       console.log(charge);
+
+      charge.description = type + ' Membership';
 
       userPaymentsRef.child(charge.id).set(charge);
       userRef.child('isMember').set(true);
