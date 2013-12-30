@@ -959,7 +959,7 @@ header.jumbotron{
 #main-footer {
     background:#fff;
     color:#8aaad9;
-    padding:100px 0 30px;
+    padding:8s0px 0 30px;
 }
 
 #main-footer .small-logo {
@@ -1262,6 +1262,10 @@ h1.section-title{
 }
 
 @media (max-width: 479px) {
+
+.jumbotron .message-box{
+    margin: 100px auto 0;
+}
 
 .jumbotron .right-col p{
     font-size:38px;
