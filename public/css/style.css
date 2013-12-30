@@ -36,17 +36,6 @@
 #main-nav a.ir-logo {
     background: url("../assets/rtclogo.png");
 }
-.jumbotron .left-col p {
-    text-transform: uppercase;
-    font-weight: 900;
-}
-
-.jumbotron .right-col p {
-    font-weight: 300;
-    padding: 20px 30px 10px 20px;
-    font-size: 28px;
-    line-height: 39px;
-}
 
 header#inner.jumbotron {
     background:url(../assets/header-bg.jpg) no-repeat center center fixed; 

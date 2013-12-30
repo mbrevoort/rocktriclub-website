@@ -360,13 +360,14 @@ header.jumbotron{
     padding:0;
 }
 
-.jumbotron .left-col p{
+.jumbotron .left-col p {
     display:inline-block;
     margin:0;
     padding:18px 5px 12px 30px;
     font-size:38px;
-    font-weight:300;
     line-height:48px;
+    text-transform: uppercase;
+    font-weight: 900;
 }
 
 .jumbotron .left-col p span{
@@ -378,10 +379,12 @@ header.jumbotron{
     display:inline-block;
     margin:0;
     padding:10px 30px 10px 5px;
-    font-size:110px;
-    line-height:110px;
     font-weight:900;
     text-transform:uppercase;
+    font-weight: 300;
+    padding: 20px 30px 10px 20px;
+    font-size: 28px;
+    line-height: 39px;
 }
 
 .jumbotron .home-slider .slides li {
@@ -398,6 +401,19 @@ header.jumbotron{
 .jumbotron .home-slider .slides li.clone {
     opacity:1;
 }
+
+#home .index-nav {
+    text-align: center;
+    margin-top: 10px;
+}
+
+#home .index-nav a {
+    background-color: rgba(255,255,255,0.9);
+    margin: 0 10px;
+    padding: 10px;
+    white-space: nowrap;
+}
+
 /*------------------------
 -----Services Styles------
 ------------------------*/
@@ -1141,20 +1157,6 @@ header.jumbotron{
 
 @media (max-width: 1199px) {
 
-.jumbotron .left-col p{
-    font-size:28px;
-    line-height:32px;
-}
-
-.jumbotron .left-col p span{
-    font-size:36px;
-}
-
-.jumbotron .right-col p{
-    font-size:82px;
-    line-height:82px;
-}
-
 }
 
 @media (max-width: 991px) {
@@ -1225,8 +1227,8 @@ header.jumbotron{
 }
 
 .jumbotron .left-col p{
-    font-size:24px;
-    line-height:28px;
+    font-size:30px;
+    line-height:40px;
 }
 
 .jumbotron .left-col p span{
@@ -1234,8 +1236,8 @@ header.jumbotron{
 }
 
 .jumbotron .right-col p{
-    font-size:62px;
-    line-height:62px;
+    font-size: 20px;
+    line-height: 25px;
 }
 
 #main-footer ul.footer-nav{
@@ -1259,6 +1261,11 @@ header.jumbotron{
 h1.section-title{
     font-size:42px;
     line-height:56px;
+    margin:0 0 80px;
+}
+
+#sponsors-header {
+    padding:60px 0 0;
 }
 
 }
@@ -1269,16 +1276,15 @@ h1.section-title{
     margin: 100px auto 0;
 }
 
-.jumbotron .right-col p{
-    font-size:38px;
-    line-height:38px;
+#home .index-nav a {
+    padding: 5px;
+    font-size:15px
 }
 
 h1.section-title{
     font-size:32px;
     line-height:46px;
 }
-
 
 p {
     font-size:16px;

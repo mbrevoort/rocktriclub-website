@@ -33,6 +33,18 @@ $(document).ready(function() {
     }
   });  
 
+  /*============================================
+  ScrollTo Links
+  ==============================================*/
+  $('a.scrollto').click(function(e){
+    console.log(this.hash)
+    $('html,body').scrollTo(this.hash, this.hash, {gap:{y:-80}});
+    e.preventDefault();
+
+    if ($('.navbar-collapse').hasClass('in')){
+      $('.navbar-collapse').removeClass('in').addClass('collapse');
+    }
+  });
 
   /*============================================
   Scrolling Animations
