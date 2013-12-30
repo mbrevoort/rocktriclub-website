@@ -315,12 +315,13 @@ body {
 -----Header Styles------
 ------------------------*/
 
-.jumbotron {
+header.jumbotron {
     background:url(../assets/header-bg.jpg) no-repeat center center fixed; 
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
+    background-attachment: scroll;
     color:#8aaad9;
 }
 
@@ -608,6 +609,7 @@ header.jumbotron{
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    background-attachment: scroll;
 }
 
 #sponsors .section-title {
