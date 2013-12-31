@@ -1,5 +1,6 @@
 
 var config = require('../lib/config');
+var emailNewMember = require('../lib/emailNewMember');
 var stripe = require('stripe')(config.stripe_api_key);
 var Firebase = require('firebase');
 var rootRef = new Firebase(config.firebase_root_url);
@@ -40,6 +41,8 @@ exports.join = function(req, res, next){
       return next(new Error('user with uid ' + uid + ' unknown'));
     }
 
+    var user = userSnapshot.val();
+
     // the user exists, try to process the payment then
     stripe.charges.create({
         amount: amount*100,
@@ -53,6 +56,12 @@ exports.join = function(req, res, next){
 
       userPaymentsRef.child(charge.id).set(charge);
       userRef.child('isMember').set(true);
+
+      // if the user has an email address set, send them a confirmation email
+      if (user.email) {
+        var card = charge.card.type + ' *****' + charge.card.last4;
+        emailNewMember(user.email, user.displayName, charge.description, amount, card)
+      }
 
       return res.send(charge);
     }, function(err) {
