@@ -8,5 +8,11 @@
   <a ng-click='signout()' href="#" title="Sign out"><i class="icon-signout"></i></a>
 </li>
 <li ng-if="session.user == null" ng-cloak>
-  <a ng-click='signin()' href="#">Sign In / Join <i class="icon-facebook-sign"></i></a>
+  <span>Sign In / Join:</span>
+</li>
+<li ng-if="session.user == null" ng-cloak>
+  <a ng-click="signin('facebook')" href="#"> <i class="icon-facebook-sign"></i></a>
+</li>
+<li ng-if="session.user == null" ng-cloak>
+  <a ng-click="signin('twitter')" href="#"> <i class="icon-twitter-sign"></i></a>
 </li>

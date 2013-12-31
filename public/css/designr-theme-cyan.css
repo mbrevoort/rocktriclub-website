@@ -240,6 +240,7 @@ body {
 }
 
 #main-nav .nav a,
+#main-nav .nav span,
 #main-nav .nav a:active,
 #main-nav .nav a:hover{
     padding:0px 10px;
@@ -252,6 +253,7 @@ body {
 
 
 #main-nav.scrolled .nav a,
+#main-nav.scrolled .nav span,
 #main-nav.scrolled .nav a:active,
 #main-nav.scrolled .nav a:hover{
     color:#8aaad9;
@@ -1209,7 +1211,12 @@ header.jumbotron{
     padding:10px 20px;
 }
 
+#main-nav .nav span {
+    display: block;
+}
+
 #main-nav .nav a,
+#main-nav .nav span,
 #main-nav .nav a:active,
 #main-nav .nav a:hover{
     color:#8aaad9;

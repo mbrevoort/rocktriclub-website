@@ -14,37 +14,6 @@ $(document).ready(function() {
     waypointsRefresh();
   });
 
-  /*============================================
-  Navigation Functions
-  ==============================================*/
-  if ($(window).scrollTop()===0){
-    $('#main-nav').removeClass('scrolled');
-  }
-  else{
-    $('#main-nav').addClass('scrolled');    
-  }
-
-  $(window).scroll(function(){
-    if ($(window).scrollTop()===0){
-      $('#main-nav').removeClass('scrolled');
-    }
-    else{
-      $('#main-nav').addClass('scrolled');    
-    }
-  });  
-
-  /*============================================
-  ScrollTo Links
-  ==============================================*/
-  $('a.scrollto').click(function(e){
-    console.log(this.hash)
-    $('html,body').scrollTo(this.hash, this.hash, {gap:{y:-80}});
-    e.preventDefault();
-
-    if ($('.navbar-collapse').hasClass('in')){
-      $('.navbar-collapse').removeClass('in').addClass('collapse');
-    }
-  });
 
   /*============================================
   Scrolling Animations

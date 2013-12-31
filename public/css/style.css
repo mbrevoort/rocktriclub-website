@@ -2,6 +2,7 @@
     border-radius: 100%;
     border: 2px solid #FFF;
     width: 40px;
+    heigth: 40px;
     margin: -10px 10px;
 }
 
@@ -49,14 +50,19 @@ header#inner.jumbotron {
     color:#8aaad9;
 }
 
-#main-nav .nav .dropdown-menu a,
-#main-nav .nav .dropdown-menu a:active,
-#main-nav .nav .dropdown-menu a:hover{
-    font-size: inherit;
-    line-height: inherit;
-    color:#8aaad9;
-}
 
 #main-nav li {
     margin: 0 2px;
 }
+
+#main-nav .nav a:active,
+#main-nav .nav a:hover {
+    text-decoration: underline;
+}
+
+#main-nav ul.user-status li a i,
+#main-nav ul.user-status li a i {
+    font-size: 40px;
+    line-height: 54px;
+}
+

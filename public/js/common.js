@@ -14,8 +14,8 @@ angular.module('rocktriclub', ['firebase', 'ngRoute', 'stripe'])
 
       $rootScope.session = session;
 
-      $scope.signin = function () {
-        session.login(true);
+      $scope.signin = function (provider) {
+        session.login(provider, true);
       }
 
       $scope.signout = function () {
@@ -48,9 +48,9 @@ angular.module('rocktriclub', ['firebase', 'ngRoute', 'stripe'])
         user: null,
         initialized: false,
         redirectToMembersPage: false,
-        login: function (redirectToMembersPage) {
+        login: function (provider, redirectToMembersPage) {
           session.redirectToMembersPage = redirectToMembersPage;
-          auth.login('facebook', {
+          auth.login(provider, {
             rememberMe: true,
             scope: 'email'
           });
@@ -75,14 +75,21 @@ angular.module('rocktriclub', ['firebase', 'ngRoute', 'stripe'])
 
           userRef.once('value', function (userSnapRef) {
             var userSnap = userSnapRef.val();
-            if (!userSnap.uid) userRef.child('uid').set(uid);
-            if (!userSnap.displayName) userRef.child('displayName').set(user.displayName);
-            if (!userSnap.email) userRef.child('email').set(user.email);
+            if (!userSnap || !userSnap.uid) 
+              userRef.child('uid').set(uid);
+            if (!userSnap || !userSnap.displayName) 
+              userRef.child('displayName').set(user.displayName);
+            if (user.email && (!userSnap || !userSnap.email))
+              userRef.child('email').set(user.email);
           })
 
           if (user.provider === 'facebook') {
             userRef.child('avatar').set('https://graph.facebook.com/' + user.id + '/picture');
             userRef.child('provider').set('facebook');
+          }
+          else if (user.provider === 'twitter') {
+            userRef.child('avatar').set(user.profile_image_url);
+            userRef.child('provider').set('twitter');
           }
 
           session.user = $firebase(userRef);
@@ -104,3 +111,37 @@ angular.module('rocktriclub', ['firebase', 'ngRoute', 'stripe'])
 
       return session;
     }])
+
+$(document).ready(function() {
+  /*============================================
+  ScrollTo Links
+  ==============================================*/
+  $('a.scrollto').click(function(e){
+    console.log(this.hash)
+    $('html,body').scrollTo(this.hash, this.hash, {gap:{y:-80}});
+    e.preventDefault();
+
+    if ($('.navbar-collapse').hasClass('in')){
+      $('.navbar-collapse').removeClass('in').addClass('collapse');
+    }
+  });
+
+  /*============================================
+  Navigation Functions
+  ==============================================*/
+  if ($(window).scrollTop()===0){
+    $('#main-nav').removeClass('scrolled');
+  }
+  else{
+    $('#main-nav').addClass('scrolled');
+  }
+
+  $(window).scroll(function(){
+    if ($(window).scrollTop()===0){
+      $('#main-nav').removeClass('scrolled');
+    }
+    else{
+      $('#main-nav').addClass('scrolled');
+    }
+  });
+})
