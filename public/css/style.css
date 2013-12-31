@@ -34,7 +34,8 @@
 /* theme overrides */
 
 #main-nav a.ir-logo {
-    background: url("../assets/rtclogo.png");
+    background: url("../assets/logo.png");
+    background-color: rgba(255,255,255,0.9);
 }
 
 header#inner.jumbotron {
