@@ -9,7 +9,8 @@ function($window) {
 
       // fire a before handler
       if (scope['before' + attributes.stripeForm]) {
-         scope['before' + attributes.stripeForm].apply(scope);
+         var ok = scope['before' + attributes.stripeForm].apply(scope);
+         if (!ok) return;
       }
 
       $window.Stripe.createToken(form[0], function() {

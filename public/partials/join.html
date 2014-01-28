@@ -6,7 +6,14 @@
 <div class="row">
   <div class="col-xs-12 col-md-8">
 
-    <form id="joinForm" stripe:form="processJoin" class="form-inline" role="form">
+    <form name="joinForm" id="joinForm" stripe:form="processJoin" class="form-inline" role="form">
+
+      <div class="form-group">
+        <label class="sr-only" for="profileEmail">Email</label>
+        <input ng-model="email" required type="email" class="form-control" id="profileEmail" placeholder="Email">
+      </div>
+
+      <p></p>
 
       <div class="radio">
         <label>
@@ -44,9 +51,9 @@
         </label>
       </div>
 
-
       <br/><br/>
       <div class="alert alert-danger" ng-if="!!errorMsg">{{errorMsg}}</div>
+      <div class="alert alert-danger" ng-show="joinForm.input.$error.email">Not valid email!</div>
 
       <div class="form-group">
         <label class="sr-only" for="joinCardNumber">Card number</label>

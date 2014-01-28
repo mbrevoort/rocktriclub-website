@@ -13,6 +13,7 @@ exports.join = function(req, res, next){
   var cardToken = req.body.cardToken;
   var uid = req.body.uid;
   var type = req.body.type;
+  var email = req.body.email;
   //var firebaseSessionKey = req.cookies.firebaseSessionKey;
 
   var amount = (type === 'Individual') ? 30
@@ -56,11 +57,12 @@ exports.join = function(req, res, next){
 
       userPaymentsRef.child(charge.id).set(charge);
       userRef.child('isMember').set(true);
+      userRef.child('email').set(email);
 
       // if the user has an email address set, send them a confirmation email
-      if (user.email) {
+      if (email) {
         var card = charge.card.type + ' *****' + charge.card.last4;
-        emailNewMember(user.email, user.displayName, charge.description, amount, card)
+        emailNewMember(email, user.displayName, charge.description, amount, card)
       }
 
       return res.send(charge);

@@ -62,9 +62,22 @@ angular.module('rocktriclub')
   .controller('JoinCtrl', ['$scope', '$firebase', 'session', '$http',
     function($scope, $firebase, session, $http) {
 
+      $scope.$watch('session.user.uid', function() {
+        if (session.user && session.user.uid) {
+          $scope.email = session.user.email;
+        }
+      });
+
       $scope.beforeprocessJoin = function () {
+        if (!validateEmail($scope.email)) {
+          $scope.$apply(function () {
+            setError('A valid email address is required :)');
+          });
+          return false;
+        }
         $scope.isBusy = true;
         setError();
+        return true;
       }
 
       $scope.processJoin = function(status, response) {
@@ -78,7 +91,8 @@ angular.module('rocktriclub')
         var data = {
           uid: session.user.uid,
           cardToken: response.id,
-          type: $scope.type
+          type: $scope.type,
+          email: $scope.email
         }
 
         $http.post('/api/join', data).
@@ -100,6 +114,11 @@ angular.module('rocktriclub')
 
       function successfullyJoined() {
 
+      }
+
+      function validateEmail(email) { 
+        var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(email);
       }
 
       // default to individual membership
