@@ -136,4 +136,17 @@ angular.module('rocktriclub')
     }
   })
 
+  .filter('orderByDisplayName', function() {
+    return function(obj) {
+      var array = [];
+      Object.keys(obj).forEach(function(key) {
+        if (typeof obj[key] === 'object') array.push(obj[key]);
+      });
+      array.sort(function(a, b) {
+        if(a.displayName < b.displayName) return -1;
+        if(a.displayName > b.displayName) return 1;
+        return 0;
+      });
+      return array;
+  }});
 

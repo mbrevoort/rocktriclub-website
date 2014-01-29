@@ -7,11 +7,10 @@
       <div class="col-md-8">
         <h2>Member List</h2>
         <table id="member-table" class="table table-responsive">
-          <tr ng-repeat="(id, member) in members" ng-if="member.isMember">
+          <tr ng-repeat="member in members|orderByDisplayName" ng-if="member.isMember">
             <td><img ng-src="{{member.avatar}}" class="img-circle"/></td>
             <td> {{member.displayName}}</td>
-            <td>{{member.email}}</td>
-            <td>{{member.phone}}</td>
+            <td>{{member.email}} <br>{{member.phone}}</td>
           </tr>
         </table>
       </div>
