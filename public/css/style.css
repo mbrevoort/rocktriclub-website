@@ -43,7 +43,7 @@
 /* theme overrides */
 
 #main-nav a.ir-logo {
-    background: url("../assets/logo.png");
+    background: url("../assets/logo.png") no-repeat center center;
     background-color: rgba(255,255,255,0.9);
 }
 

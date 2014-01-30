@@ -7,14 +7,14 @@
 
 #main-nav a.ir-logo {
     margin:0;
-    margin-top:5px;
+    margin-top:-10px;
     padding:0;
     width:151px;
-    height:57px;
+    height:70px;
 	text-indent: 200%;
 	white-space: nowrap;
 	overflow: hidden;
-    background: url("../assets/logo.png");
+    background: url("../assets/logo.png") no-repeat;
 }
 
 #main-nav a.ir-logo span{
