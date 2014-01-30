@@ -57,6 +57,7 @@ exports.join = function(req, res, next){
 
       userPaymentsRef.child(charge.id).set(charge);
       userRef.child('isMember').set(true);
+      userRef.child('memberType').set(type);
       userRef.child('email').set(email);
 
       // if the user has an email address set, send them a confirmation email

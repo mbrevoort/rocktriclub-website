@@ -23,7 +23,6 @@ angular.module('rocktriclub')
       $scope.signin = function () {
         session.login();
       }
-
     }])
 
   .controller('ProfileCtrl', ['$scope', 'session', '$firebase', '$location',
@@ -43,6 +42,8 @@ angular.module('rocktriclub')
           $scope.email = session.user.email;
           $scope.displayName = session.user.displayName;
           $scope.phone = session.user.phone;
+          $scope.memberType = session.user.memberType;
+          $scope.familyMembers = session.user.$child('familyMembers');
         }
       });
 
@@ -54,6 +55,24 @@ angular.module('rocktriclub')
         session.user.$child('displayName').$set($scope.displayName);
         session.user.$child('email').$set($scope.email);
         session.user.$child('phone').$set($scope.phone);
+      }
+
+      $scope.addFamilyMember = function () {
+        var uid = Math.random().toString(36).substr(2,9);
+        session.user.$child('familyMembers').$child(uid).$set({
+          displayName: '',
+          email: '',
+          phone: '',
+          uid: uid
+        });
+      }
+
+      $scope.removeFamilyMember = function (person) {
+        session.user.$child('familyMembers').$remove(person.uid)
+      }
+
+      $scope.saveFamily = function () {
+        $scope.familyMembers.$save();
       }
 
     }])
