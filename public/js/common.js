@@ -25,7 +25,23 @@ angular.module('rocktriclub', ['firebase', 'ngRoute', 'stripe'])
 
       $scope.$watch('session.user.isMember', function() {
         if (session.user && session.user.isMember) {
-          $rootScope.members = $firebase(session.firebase.child('people'));
+          $rootScope.members = [];
+          session.firebase.child('people').once('value', function (snap) {
+            var obj = snap.val();
+            $scope.$apply(function () {
+              Object.keys(obj).forEach(function (key) {
+                $rootScope.members.push(obj[key]);
+              });
+            })
+          });
+          session.firebase.child('family').once('value', function (snap) {
+            var obj = snap.val();
+            $scope.$apply(function () {
+              Object.keys(obj).forEach(function (key) {
+                $rootScope.members.push(obj[key]);
+              });
+            });
+          });
         }
       });
 
@@ -68,7 +84,6 @@ angular.module('rocktriclub', ['firebase', 'ngRoute', 'stripe'])
           });
         }
         else if (user) {
-          console.log(user);
           var uid = user.uid;
 
           var userRef = session.firebase.child('people').child(uid);

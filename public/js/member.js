@@ -43,7 +43,9 @@ angular.module('rocktriclub')
           $scope.displayName = session.user.displayName;
           $scope.phone = session.user.phone;
           $scope.memberType = session.user.memberType;
-          $scope.familyMembers = session.user.$child('familyMembers');
+          $scope.familyMemberIds = [];
+          $scope.familyMembers = [];
+          $scope.updateFamilyMemberList();
         }
       });
 
@@ -58,21 +60,38 @@ angular.module('rocktriclub')
       }
 
       $scope.addFamilyMember = function () {
-        var uid = Math.random().toString(36).substr(2,9);
-        session.user.$child('familyMembers').$child(uid).$set({
+        var uid = session.user.uid + '-' + Math.random().toString(36).substr(2,9);
+        session.firebase.child('family').child(uid).set({
           displayName: '',
           email: '',
           phone: '',
           uid: uid
         });
+        session.user.$child('familyMembers').$child(uid).$set(true);
+        $scope.updateFamilyMemberList();
       }
 
       $scope.removeFamilyMember = function (person) {
-        session.user.$child('familyMembers').$remove(person.uid)
+        $scope.saveFamily();
+        session.firebase.child('family').child(person.uid).remove();
+        session.user.$child('familyMembers').$remove(person.uid);
+        $scope.updateFamilyMemberList();
       }
 
       $scope.saveFamily = function () {
-        $scope.familyMembers.$save();
+        $scope.familyMembers.forEach(function (person) {
+          console.log('saving', person);
+          if (person.displayName)
+            person.isMember = true;
+          person.$save();
+        });
+      }
+
+      $scope.updateFamilyMemberList = function () {
+        $scope.familyMemberIds = session.user.$child('familyMembers').$getIndex();
+        $scope.familyMembers = $scope.familyMemberIds.map(function(id) {
+          return $firebase(session.firebase.child('family').child(id));
+        });
       }
 
     }])
@@ -155,17 +174,4 @@ angular.module('rocktriclub')
     }
   })
 
-  .filter('orderByDisplayName', function() {
-    return function(obj) {
-      var array = [];
-      Object.keys(obj).forEach(function(key) {
-        if (typeof obj[key] === 'object') array.push(obj[key]);
-      });
-      array.sort(function(a, b) {
-        if(a.displayName < b.displayName) return -1;
-        if(a.displayName > b.displayName) return 1;
-        return 0;
-      });
-      return array;
-  }});
 
