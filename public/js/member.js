@@ -15,8 +15,6 @@ angular.module('rocktriclub')
         })
     }])
 
-
-
   .controller('MemberCtrl', ['$scope', '$firebase', 'session',
     function($scope, $firebase, session) {
 
