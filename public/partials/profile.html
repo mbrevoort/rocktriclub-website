@@ -6,6 +6,7 @@
     <h1>Profile <small>{{session.user.displayName}}</small></h1>
 
     <form role="form">
+      <h2>Your Contact Information</h2>
       <div class="form-group">
         <label for="profileName">Name</label>
         <input ng-model="displayName" type="text" class="form-control" id="profileName" placeholder="Your name">
@@ -37,12 +38,12 @@
             <label for="profilePhone">Phone number</label>
             <input ng-model="person.phone" type="phone" class="form-control" placeholder="Phone number">
           </div>
+          <button ng-click="saveFamily()" type="submit" class="btn btn-primary">Save</button> 
           <button ng-click="removeFamilyMember(person)" type="submit" class="btn btn-danger btn-sm">Remove</button>
+          <i ng-if="showFamilyOK" class="icon-ok ok-status"></i>
         </li>
       </ul>
-      <button ng-click="addFamilyMember()" type="submit" class="btn btn-small">Add</button>
-      <button ng-click="saveFamily()" type="submit" class="btn btn-primary">Save</button> 
-      <i ng-if="showFamilyOK" class="icon-ok ok-status"></i>
+      <button ng-click="addFamilyMember()" type="submit" class="btn btn-small">Add Family Member</button>
     </form>
   </div>
 
