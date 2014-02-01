@@ -36,11 +36,13 @@ angular.module('rocktriclub', ['firebase', 'ngRoute', 'stripe'])
           });
           session.firebase.child('family').once('value', function (snap) {
             var obj = snap.val();
-            $scope.$apply(function () {
-              Object.keys(obj).forEach(function (key) {
-                $rootScope.members.push(obj[key]);
+            if (obj) {
+              $scope.$apply(function () {
+                Object.keys(obj).forEach(function (key) {
+                  $rootScope.members.push(obj[key]);
+                });
               });
-            });
+            }
           });
         }
       });
