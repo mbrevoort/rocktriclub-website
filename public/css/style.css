@@ -74,3 +74,7 @@ header#inner.jumbotron {
     line-height: 54px;
 }
 
+.ok-status {
+    color: green;
+    font-size: 1.2em;
+}

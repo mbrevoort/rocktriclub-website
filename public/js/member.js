@@ -47,6 +47,8 @@ angular.module('rocktriclub')
         }
       });
 
+      $scope.isBusy = false;
+
       $scope.stripeTimestampToDate = function (ts) {
         return new Date(ts*1000);
       }
@@ -55,6 +57,10 @@ angular.module('rocktriclub')
         session.user.$child('displayName').$set($scope.displayName);
         session.user.$child('email').$set($scope.email);
         session.user.$child('phone').$set($scope.phone);
+        $scope.showProfileOK = true;
+        setTimeout(function() { 
+          $scope.$apply(function () { $scope.showProfileOK = false;  });
+        }, 2000);
       }
 
       $scope.addFamilyMember = function () {
@@ -77,12 +83,19 @@ angular.module('rocktriclub')
       }
 
       $scope.saveFamily = function () {
+        $scope.isBusy = true;
         $scope.familyMembers.forEach(function (person) {
           console.log('saving', person);
           if (person.displayName)
             person.isMember = true;
           person.$save();
+          $scope.isBusy = false;
         });
+        $scope.showFamilyOK = true;
+        setTimeout(function() { 
+          $scope.$apply(function () { $scope.showFamilyOK = false;  });
+        }, 2000);
+
       }
 
       $scope.updateFamilyMemberList = function () {

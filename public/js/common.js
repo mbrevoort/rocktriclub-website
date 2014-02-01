@@ -77,6 +77,7 @@ angular.module('rocktriclub', ['firebase', 'ngRoute', 'stripe'])
       };
 
       var auth = new FirebaseSimpleLogin(session.firebase, function(error, user) {
+        console.log(user, session.firebase);
         if (error) {
           console.log(error);
           $rootScope.$apply(function () {
