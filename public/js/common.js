@@ -60,7 +60,7 @@ angular.module('rocktriclub', ['firebase', 'ngRoute', 'stripe'])
   .factory('session', ['$firebase', '$rootScope', '$location',
     function ($firebase, $rootScope, $location) {
       var session = {
-        firebase: new Firebase('https://rocktriclub.firebaseio.com/'),
+        firebase: new Firebase(FIREBASE_ROOT_URL),
         user: null,
         initialized: false,
         redirectToMembersPage: false,
