@@ -111,6 +111,13 @@ angular.module('rocktriclub')
           });
           return false;
         }
+
+        // if an access code is provide, bypass the call to stripe
+        // and pass the access code up to the server in processJoin
+        if ($scope.accessCode) {
+          $scope.processJoin(null, {});
+          return false;
+        }
         $scope.isBusy = true;
         setError();
         return true;
@@ -128,7 +135,8 @@ angular.module('rocktriclub')
           uid: session.user.uid,
           cardToken: response.id,
           type: $scope.type,
-          email: $scope.email
+          email: $scope.email,
+          accessCode: $scope.accessCode
         }
 
         $http.post('/api/join', data).

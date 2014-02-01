@@ -51,7 +51,14 @@
         </label>
       </div>
 
-      <br/><br/>
+      <div class="form-group">
+        <label class="sr-only" for="accessCode">Access Code</label>
+        <input ng-model="accessCode"  class="form-control" id="accessCode" placeholder="optional Access Code">
+      </div>
+
+      <br/>
+      
+      <br/>
       <div class="alert alert-danger" ng-if="!!errorMsg">{{errorMsg}}</div>
       <div class="alert alert-danger" ng-show="joinForm.input.$error.email">Not valid email!</div>
 

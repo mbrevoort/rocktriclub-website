@@ -14,6 +14,7 @@ exports.join = function(req, res, next){
   var uid = req.body.uid;
   var type = req.body.type;
   var email = req.body.email;
+  var accessCode = req.body.accessCode;
   //var firebaseSessionKey = req.cookies.firebaseSessionKey;
 
   var amount = (type === 'Individual') ? 30
@@ -22,11 +23,11 @@ exports.join = function(req, res, next){
              : (type === '6202 Family') ? 90
              : -1;
 
-  if (amount < 0) {
+  if (amount < 0 && !accessCode) {
     return next(new Error('Invalid membership type ' + type));
   }
 
-  if (!cardToken) {
+  if (!cardToken && !accessCode) {
     return next(new Error('missing cardToken'));
   }
 
@@ -36,6 +37,14 @@ exports.join = function(req, res, next){
 
   var userRef = rootRef.child('people').child(uid);
   var userPaymentsRef = rootRef.child('payments').child(uid);
+
+  // if the access code matches it's a trusted person who doesn't have to pay
+  // don't bother sending an email either
+  if (accessCode && accessCode == config.accessCode) {
+    userRef.child('isMember').set(true);
+    userRef.child('memberType').set('Manual');
+    return res.send(200);
+  }
 
   userRef.once('value', function (userSnapshot) {
     if (userSnapshot.value === null) {
