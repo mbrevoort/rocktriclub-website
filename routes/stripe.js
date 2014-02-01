@@ -43,6 +43,7 @@ exports.join = function(req, res, next){
   if (accessCode && accessCode == config.accessCode) {
     userRef.child('isMember').set(true);
     userRef.child('memberType').set('Manual');
+    userRef.child('email').set(email);
     return res.send(200);
   }
 
