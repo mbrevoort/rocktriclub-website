@@ -171,4 +171,3 @@ angular.module('rocktriclub')
       controller: 'JoinCtrl'
     }
   })
-
