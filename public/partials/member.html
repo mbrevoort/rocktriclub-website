@@ -1,12 +1,12 @@
 <div ng-if="!!session.user  && session.initialized">
   <join ng-if="!session.user.isMember"></join>
   <div ng-if="!!session.user.isMember">
-    <h1>Member <small>{{session.user.displayName}}</small></h1>
-
-    <p>Thank you for joining with us!</p>
-
     <div class="row">
       <div class="col-md-8">
+        <h1>Member <small>{{session.user.displayName}}</small></h1>
+
+        <p>Thank you for joining with us!</p>
+
         <h2>Member List</h2>
         <table id="member-table" class="table table-responsive">
           <tr ng-repeat="member in members | orderBy:'displayName'" ng-if="member.isMember">
@@ -18,6 +18,21 @@
             <td>{{member.email}} <br>{{member.phone}}</td>
           </tr>
         </table>
+      </div>
+      <div class="col-md-4">
+        <h1>Info</h1>
+        <h2>Get in Touch</h2>
+        <p>
+          Need help? Looking for a workout partner? Planning to do a workout and want some company? You can email all club members at <a href="mailto:info@rocktriclub.com">info@rocktriclub.com</a>! Also keep tabs on the <a href="/workouts">official club workouts.</a>
+        </p>
+        <p>
+            You can also look up other members' contact info in the member list to the left. You can update your own contact info on the <a href="/member#/profile">profile tab</a>.
+        </p>
+
+        <h2>Waiver</h2>
+        <p>
+          All members are required to fill out a <a href="/assets/2014USATClubWaiver.pdf">USAT Club Waiver</a> before participating in any club workouts (this is for our insurance). Please complete the <a href="/assets/2014USATClubWaiver.pdfUSAT">waiver</a> and bring it to your next workout.
+        </p>
       </div>
     </div>
   </div>

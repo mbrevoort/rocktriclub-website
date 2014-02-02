@@ -102,14 +102,14 @@ a:focus {
 }
 
 a {
-  color: #536177;
+  color: ##8aaad9;
   text-decoration: none;
 }
 
 a:hover,
 a:focus {
   color: #637187;
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 a:focus,
