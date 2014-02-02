@@ -18,9 +18,6 @@ angular.module('rocktriclub')
   .controller('MemberCtrl', ['$scope', '$firebase', 'session',
     function($scope, $firebase, session) {
 
-      $scope.signin = function () {
-        session.login();
-      }
     }])
 
   .controller('ProfileCtrl', ['$scope', 'session', '$firebase', '$location',

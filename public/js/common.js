@@ -14,15 +14,6 @@ angular.module('rocktriclub', ['firebase', 'ngRoute', 'stripe'])
 
       $rootScope.session = session;
 
-      $scope.signin = function (provider) {
-        session.login(provider, true);
-      }
-
-      $scope.signout = function () {
-        session.logout();
-        $location.path('/')
-      }
-
       $scope.$watch('session.user.isMember', function() {
         if (session.user && session.user.isMember) {
           $rootScope.members = [];
@@ -88,6 +79,16 @@ angular.module('rocktriclub', ['firebase', 'ngRoute', 'stripe'])
           auth.logout();
         }
       };
+
+      $rootScope.signin = function (provider) {
+        session.login(provider, true);
+      }
+
+      $rootScope.signout = function () {
+        session.logout();
+        $location.path('/')
+      }
+
 
       var auth = new FirebaseSimpleLogin(session.firebase, function(error, user) {
         console.log(user, session.firebase);
