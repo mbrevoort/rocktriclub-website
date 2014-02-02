@@ -13,7 +13,6 @@ html
 
     link(rel='stylesheet', href='//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css')
     link(rel='stylesheet', href='css/font-awesome.css')
-    link(rel='stylesheet', href='css/designr-theme-cyan.css')
     link(rel='stylesheet', href='/css/style.css')
   body(ng-app='rocktriclub', ng-controller='MainCtrl', data-spy="scroll", data-target="#main-nav", data-offset="200")
 
@@ -47,16 +46,23 @@ html
             p
               small <a href="http://www.flickr.com/photos/clairewilliamsphotography/4526155187">cover photo<a/> courtesy of <a href="http://www.flickr.com/photos/clairewilliamsphotography">ClaireWilliamsPhotography</a>
 
-    script(src='//code.jquery.com/jquery-1.10.1.min.js')
-    script(src='//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js')
-    script(src="/js/jquery.scrollto.js")
-    script(src="/js/waypoints.min.js")
-    script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular.js')
-    script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular-route.js')
-    script(src='//cdn.firebase.com/v0/firebase.js')
-    script(src='//cdn.firebase.com/libs/angularfire/0.5.0/angularfire.js')
-    script(src='//cdn.firebase.com/v0/firebase-simple-login.js')
-    script(src='/js/stripe-angular.js')
+
+    if env === 'development'
+      //-<!-- build:js public/js/app.min.js -->
+      script(src='/js/jquery-1.10.1.min.js')
+      script(src='/js/bootstrap.min.js')
+      script(src="/js/jquery.scrollto.js")
+      script(src="/js/waypoints.min.js")
+      script(src='/js/angularjs/1.2.6/angular.js')
+      script(src='/js/angularjs/1.2.6/angular-route.js')
+      script(src='/js/firebase.js')
+      script(src='/js/angularfire/0.5.0/angularfire.js')
+      script(src='/js/firebase-simple-login.js')
+      script(src='/js/stripe-angular.js')
+      //-<!-- endbuild -->
+    else
+      script(src="/js/app.min.js")
+
     script(src="https://js.stripe.com/v2/")
     script.
       FIREBASE_ROOT_URL = '#{config.firebase_root_url}';

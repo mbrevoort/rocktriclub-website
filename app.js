@@ -19,6 +19,7 @@ app.use(express.logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.methodOverride());
+app.use(express.compress());
 app.use(express.cookieParser());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
@@ -27,6 +28,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
+
+app.locals.env = app.get('env');
 
 app.get('/', routes.index);
 app.get('/member', routes.member);
