@@ -1434,3 +1434,12 @@ header#inner.jumbotron {
     color: green;
     font-size: 1.2em;
 }
+
+span.badge-6202 {
+    background-color: #f0ad4e;
+    margin-right: 3px;
+}
+span.badge-family {
+    background-color: #5cb85c;
+    margin-right: 3px;
+}

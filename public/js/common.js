@@ -30,7 +30,17 @@ angular.module('rocktriclub', ['firebase', 'ngRoute', 'stripe'])
             var obj = snap.val();
             $scope.$apply(function () {
               Object.keys(obj).forEach(function (key) {
-                $rootScope.members.push(obj[key]);
+                var person = obj[key];
+                if (person.memberType) {
+                  person.badges = [];
+                  if (person.memberType.indexOf('6202') === 0) {
+                    person.badges.push('6202');
+                  }
+                  if (person.memberType.indexOf('Family') >= 0) {
+                    person.badges.push('family');
+                  }
+                }
+                $rootScope.members.push(person);
               });
             })
           });
@@ -39,6 +49,7 @@ angular.module('rocktriclub', ['firebase', 'ngRoute', 'stripe'])
             if (obj) {
               $scope.$apply(function () {
                 Object.keys(obj).forEach(function (key) {
+                  obj[key].badges = ['family'];
                   $rootScope.members.push(obj[key]);
                 });
               });

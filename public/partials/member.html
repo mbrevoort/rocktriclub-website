@@ -11,7 +11,10 @@
         <table id="member-table" class="table table-responsive">
           <tr ng-repeat="member in members | orderBy:'displayName'" ng-if="member.isMember">
             <td><img ng-src="{{member.avatar || '/assets/default.png'}}" class="img-circle"/></td>
-            <td> {{member.displayName}}</td>
+            <td> 
+              <strong>{{member.displayName}}</strong> <br>
+              <span class="label label-info badge-{{badge}}" ng-repeat="badge in member.badges">{{badge}}</span>
+            </td>
             <td>{{member.email}} <br>{{member.phone}}</td>
           </tr>
         </table>
