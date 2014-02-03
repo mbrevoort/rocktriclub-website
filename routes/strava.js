@@ -1,4 +1,5 @@
 var request = require('request')
+  , http = require('http')
   ;
 
 var relativeRe = new RegExp('href="/athletes/', 'g');
