@@ -36,6 +36,8 @@ app.get('/member', routes.member);
 app.get('/results', routes.results);
 app.get('/workouts', routes.workouts);
 app.post('/api/join', routes.stripe.join);
+app.get('/api/strava/latest.iframe', routes.strava.latest);
+app.get('/api/strava/summary.iframe', routes.strava.summary);
 
 console.log('config', config);
 

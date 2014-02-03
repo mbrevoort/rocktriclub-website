@@ -21,3 +21,4 @@ exports.results = function(req, res){
 };
 
 exports.stripe = require('./stripe');
+exports.strava = require('./strava');
