@@ -107,8 +107,9 @@ angular.module('rocktriclub', ['firebase', 'ngRoute', 'stripe'])
             var userSnap = userSnapRef.val();
             if (!userSnap || !userSnap.uid) 
               userRef.child('uid').set(uid);
-            if (!userSnap || !userSnap.displayName) 
+            if (!userSnap || !userSnap.displayName) {
               userRef.child('displayName').set(user.displayName);
+            }
             if (user.email && (!userSnap || !userSnap.email))
               userRef.child('email').set(user.email);
           })
@@ -120,6 +121,10 @@ angular.module('rocktriclub', ['firebase', 'ngRoute', 'stripe'])
           else if (user.provider === 'twitter') {
             userRef.child('avatar').set(user.profile_image_url);
             userRef.child('provider').set('twitter');
+          }
+          else if (user.provider === 'persona') {
+            userRef.child('avatar').set('/assets/default.png');
+            userRef.child('provider').set('persona');
           }
 
           session.user = $firebase(userRef);

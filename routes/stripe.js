@@ -14,6 +14,7 @@ exports.join = function(req, res, next){
   var uid = req.body.uid;
   var type = req.body.type;
   var email = req.body.email;
+  var displayName = req.body.displayName;
   var accessCode = req.body.accessCode;
   //var firebaseSessionKey = req.cookies.firebaseSessionKey;
 
@@ -44,6 +45,7 @@ exports.join = function(req, res, next){
     userRef.child('isMember').set(true);
     userRef.child('memberType').set('Manual');
     userRef.child('email').set(email);
+    userRef.child('displayName').set(displayName);
     return res.send(200);
   }
 
@@ -68,7 +70,7 @@ exports.join = function(req, res, next){
       userPaymentsRef.child(charge.id).set(charge);
       userRef.child('isMember').set(true);
       userRef.child('memberType').set(type);
-      userRef.child('email').set(email);
+      userRef.child('displayName').set(displayName);
 
       // if the user has an email address set, send them a confirmation email
       if (email) {

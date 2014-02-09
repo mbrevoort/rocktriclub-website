@@ -146,6 +146,7 @@ angular.module('rocktriclub')
           cardToken: response.id,
           type: $scope.type,
           email: $scope.email,
+          displayName: $scope.displayName,
           accessCode: $scope.accessCode
         }
 

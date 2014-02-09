@@ -9,6 +9,11 @@
     <form name="joinForm" id="joinForm" stripe:form="processJoin" class="form-inline" role="form">
 
       <div class="form-group">
+        <label class="sr-only" for="profileDisplayName">Email</label>
+        <input ng-model="displayName" required type="string" class="form-control" id="profileDisplayName" placeholder="First and last name">
+      </div>
+
+      <div class="form-group">
         <label class="sr-only" for="profileEmail">Email</label>
         <input ng-model="email" required type="email" class="form-control" id="profileEmail" placeholder="Email">
       </div>
