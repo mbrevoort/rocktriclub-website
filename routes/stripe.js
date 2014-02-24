@@ -46,6 +46,8 @@ exports.join = function(req, res, next){
     userRef.child('memberType').set('Manual');
     userRef.child('email').set(email);
     userRef.child('displayName').set(displayName);
+
+    emailNewMember(email, user.displayName);
     return res.send(200);
   }
 
