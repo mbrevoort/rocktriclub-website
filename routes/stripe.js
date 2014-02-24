@@ -41,7 +41,7 @@ exports.join = function(req, res, next){
 
   // if the access code matches it's a trusted person who doesn't have to pay
   // don't bother sending an email either
-  if (accessCode && accessCode == config.accessCode) {
+  if (accessCode && config.accessCode && config.accessCode.indexOf(accessCode) > -1) {
     userRef.child('isMember').set(true);
     userRef.child('memberType').set('Manual');
     userRef.child('email').set(email);
