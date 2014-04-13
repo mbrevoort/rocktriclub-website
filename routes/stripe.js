@@ -19,8 +19,8 @@ exports.join = function(req, res, next){
   //var firebaseSessionKey = req.cookies.firebaseSessionKey;
 
   var amount = (type === 'Individual') ? 30
-             : (type === 'Family') ? 60
-             : (type === '6202 Individual') ? 50
+             : (type === 'Family') ? 50
+             : (type === '6202 Individual') ? 60
              : (type === '6202 Family') ? 90
              : -1;
 
